@@ -1,0 +1,12 @@
+---
+- name: Executing script to remote host
+  hosts: all
+  become: yes
+  tasks:
+    - name: Executing script as sudo
+      script: /home/ansible/script.sh
+      register: console
+
+    - debug: msg="{{ console.stdout }}"
+
+    - debug: msg="{{ console.stderr }}"
